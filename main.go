@@ -21,7 +21,7 @@ type ObjectPermission struct {
 	Class      bool
 	Public     bool
 	Hidden     bool
-	Networks   Permission
+	Masks      map[string]Permission
 }
 
 type Networks map[string][]string
@@ -129,6 +129,9 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 
 	// For every permission.
 	for _, item := range entries {
+		// We only have one permission mask at the moment.
+		mask := item.Masks["Networks"]
+
 		// If the object is hidden, set everything to false.
 		if item.Hidden {
 			for n := range v {
@@ -136,12 +139,15 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 			}
 		}
 
-		// Take the "Shared To" list.
-		sharedTo := item.Networks.SharedTo
 		// If it's shared to "all networks", set the "Shared To"
-		// list to be all of the viewee's networks.
-		if item.Networks.All {
+		// list to be all of the viewee's networks otherwise we
+		// just work off the list that's given.
+		var sharedTo []string
+
+		if mask.All {
 			sharedTo = s.Networks[viewee]
+		} else {
+			sharedTo = mask.SharedTo
 		}
 
 		for _, n := range sharedTo {
@@ -158,7 +164,7 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 		}
 
 		// Remove all the "Hidden From" networks.
-		for _, n := range item.Networks.HiddenFrom {
+		for _, n := range mask.HiddenFrom {
 			v[n] = false
 		}
 	}
