@@ -31,12 +31,14 @@
         "Class": false,
         "Public": true,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": false
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": false
+          }
         }
-      }},
+      },
       {
         "UserID": "Alice",
         "ObjectType": "skill",
@@ -44,14 +46,14 @@
         "Class": false,
         "Public": false,
         "Hidden": false,
-        "Masks":{
-        "Networks": {
-          "SharedTo": [
-            "Boundgrave"
-          ],
-          "HiddenFrom": null,
-          "All": false
-        }
+        "Masks": {
+          "Networks": {
+            "SharedTo": [
+              "Boundgrave"
+            ],
+            "HiddenFrom": null,
+            "All": false
+          }
         }
       },
       {
@@ -61,12 +63,13 @@
         "Class": false,
         "Public": false,
         "Hidden": true,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": false
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": false
+          }
         }
-      }
       }
     ],
     "Bob": [
@@ -77,12 +80,14 @@
         "Class": false,
         "Public": false,
         "Hidden": true,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": false
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": false
+          }
         }
-      }},
+      },
       {
         "UserID": "Bob",
         "ObjectType": "skill",
@@ -90,11 +95,13 @@
         "Class": false,
         "Public": false,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": true
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": true
+          }
+        }
       },
       {
         "UserID": "Bob",
@@ -103,11 +110,13 @@
         "Class": false,
         "Public": true,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": false
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": false
+          }
+        }
       }
     ],
     "Chip": [
@@ -118,11 +127,13 @@
         "Class": true,
         "Public": false,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": true
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": true
+          }
+        }
       },
       {
         "UserID": "Chip",
@@ -131,13 +142,15 @@
         "Class": false,
         "Public": false,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": [
-            "Mextunmo"
-          ],
-          "All": false
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": [
+              "Mextunmo"
+            ],
+            "All": false
+          }
+        }
       }
     ],
     "Diana": [
@@ -148,13 +161,15 @@
         "Class": false,
         "Public": false,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": [
-            "Terregonje"
-          ],
-          "All": true
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": [
+              "Terregonje"
+            ],
+            "All": true
+          }
+        }
       },
       {
         "UserID": "Diana",
@@ -163,11 +178,13 @@
         "Class": false,
         "Public": true,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": false
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": false
+          }
+        }
       },
       {
         "UserID": "Diana",
@@ -176,11 +193,13 @@
         "Class": false,
         "Public": false,
         "Hidden": true,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": false
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": false
+          }
+        }
       }
     ],
     "Frank": [
@@ -191,11 +210,13 @@
         "Class": true,
         "Public": false,
         "Hidden": false,
-        "Masks":{"Networks": {
-          "SharedTo": null,
-          "HiddenFrom": null,
-          "All": true
-        }}
+        "Masks": {
+          "Networks": {
+            "SharedTo": null,
+            "HiddenFrom": null,
+            "All": true
+          }
+        }
       }
     ]
   },
