@@ -1,0 +1,226 @@
+{
+  "Networks": {
+    "Alice": [
+      "Stonebroti",
+      "Morfi",
+      "Boundgrave"
+    ],
+    "Bob": [
+      "Boundgrave",
+      "Terregonje"
+    ],
+    "Chip": [
+      "Mextunmo",
+      "Terregonje"
+    ],
+    "Diana": [
+      "Mextunmo",
+      "Terregonje"
+    ],
+    "Frank": [
+      "Toompark",
+      "Percalcombe"
+    ]
+  },
+  "Perms": {
+    "Alice": [
+      {
+        "UserID": "Alice",
+        "ObjectType": "skill",
+        "ObjectID": "Alchemy",
+        "Class": false,
+        "Public": true,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": false
+        }
+      },
+      {
+        "UserID": "Alice",
+        "ObjectType": "skill",
+        "ObjectID": "Acrobatics",
+        "Class": false,
+        "Public": false,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": [
+            "Boundgrave"
+          ],
+          "HiddenFrom": null,
+          "All": false
+        }
+      },
+      {
+        "UserID": "Alice",
+        "ObjectType": "skill",
+        "ObjectID": "Archery",
+        "Class": false,
+        "Public": false,
+        "Hidden": true,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": false
+        }
+      }
+    ],
+    "Bob": [
+      {
+        "UserID": "Bob",
+        "ObjectType": "skill",
+        "ObjectID": "Brainwashing",
+        "Class": false,
+        "Public": false,
+        "Hidden": true,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": false
+        }
+      },
+      {
+        "UserID": "Bob",
+        "ObjectType": "skill",
+        "ObjectID": "Boating",
+        "Class": false,
+        "Public": false,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": true
+        }
+      },
+      {
+        "UserID": "Bob",
+        "ObjectType": "skill",
+        "ObjectID": "Birdwatching",
+        "Class": false,
+        "Public": true,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": false
+        }
+      }
+    ],
+    "Chip": [
+      {
+        "UserID": "Chip",
+        "ObjectType": "skill",
+        "ObjectID": "*",
+        "Class": true,
+        "Public": false,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": true
+        }
+      },
+      {
+        "UserID": "Chip",
+        "ObjectType": "skill",
+        "ObjectID": "Cooking",
+        "Class": false,
+        "Public": false,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": [
+            "Mextunmo"
+          ],
+          "All": false
+        }
+      }
+    ],
+    "Diana": [
+      {
+        "UserID": "Diana",
+        "ObjectType": "skill",
+        "ObjectID": "Dancing",
+        "Class": false,
+        "Public": false,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": [
+            "Terregonje"
+          ],
+          "All": true
+        }
+      },
+      {
+        "UserID": "Diana",
+        "ObjectType": "skill",
+        "ObjectID": "Diplomacy",
+        "Class": false,
+        "Public": true,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": false
+        }
+      },
+      {
+        "UserID": "Diana",
+        "ObjectType": "skill",
+        "ObjectID": "Disguise",
+        "Class": false,
+        "Public": false,
+        "Hidden": true,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": false
+        }
+      }
+    ],
+    "Frank": [
+      {
+        "UserID": "Frank",
+        "ObjectType": "skill",
+        "ObjectID": "*",
+        "Class": true,
+        "Public": false,
+        "Hidden": false,
+        "Networks": {
+          "SharedTo": null,
+          "HiddenFrom": null,
+          "All": true
+        }
+      }
+    ]
+  },
+  "Skills": {
+    "Alice": [
+      "Alchemy",
+      "Acrobatics",
+      "Archery"
+    ],
+    "Bob": [
+      "Brainwashing",
+      "Boating",
+      "Birdwatching"
+    ],
+    "Chip": [
+      "Alchemy",
+      "Cooking",
+      "Criminology"
+    ],
+    "Diana": [
+      "Dancing",
+      "Diplomacy",
+      "Disguise"
+    ],
+    "Frank": [
+      "Falconry",
+      "Forgery",
+      "Forensics"
+    ]
+  }
+}

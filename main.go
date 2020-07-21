@@ -8,68 +8,53 @@ import (
 	"strings"
 )
 
-type Entry struct {
+type Permission struct {
 	SharedTo   []string
 	HiddenFrom []string
-	Public     bool
-	Hidden     bool
-	AllNet     bool
+	All        bool
 }
 
-type Perm struct {
-	UserID      string
-	ObjectType  string
-	ObjectID    string
-	Class       bool
-	Permissions Entry
+type ObjectPermission struct {
+	UserID     string
+	ObjectType string
+	ObjectID   string
+	Class      bool
+	Public     bool
+	Hidden     bool
+	Networks   Permission
 }
 
 type Networks map[string][]string
-type UserPerms map[string][]Perm
+type UserPerms map[string][]ObjectPermission
 
 type System struct {
-	networks Networks
-	perms    UserPerms
-	skills   map[string][]string
+	Networks Networks
+	Perms    UserPerms
+	Skills   map[string][]string
 }
 
 func NewSystem() System {
-	b, err := ioutil.ReadFile("perms.json")
+	// Easier to initialise from a JSON file than make a big
+	// literal map of structs of structs of ...
+	b, err := ioutil.ReadFile("system.json")
 	if err != nil {
 		panic(err)
 	}
 
-	perms := make(UserPerms)
-	err = json.Unmarshal(b, &perms)
+	s := System{}
+	err = json.Unmarshal(b, &s)
 	if err != nil {
 		panic(err)
 	}
-	// fmt.Printf("%#v\n", perms)
 
-	networks := map[string][]string{
-		"Alice": []string{"Stonebroti", "Morfi", "Boundgrave"},
-		"Bob":   []string{"Boundgrave", "Terregonje"},
-		"Chip":  []string{"Mextunmo", "Terregonje"},
-		"Diana": []string{"Mextunmo", "Terregonje"},
-		"Frank": []string{"Toompark", "Percalcombe"},
-	}
-
-	skills := map[string][]string{
-		"Alice": []string{"Alchemy", "Acrobatics", "Archery"},
-		"Bob":   []string{"Brainwashing", "Boating", "Birdwatching"},
-		"Chip":  []string{"Alchemy", "Cooking", "Criminology"},
-		"Diana": []string{"Dancing", "Diplomacy", "Disguise"},
-		"Frank": []string{"Falconry", "Forgery", "Forensics"},
-	}
-
-	return System{networks, perms, skills}
+	return s
 }
 
 func main() {
 	s := NewSystem()
 
 	people := []string{}
-	for v, _ := range s.networks {
+	for v, _ := range s.Networks {
 		people = append(people, v)
 	}
 	sort.Strings(people)
@@ -84,29 +69,14 @@ func main() {
 		}
 		fmt.Println()
 	}
-
-	/*
-		s.Check("Bob", "Diana", "Dancing")
-		s.Check("Bob", "Diana", "Diplomacy")
-		s.Check("Bob", "Diana", "Disguise")
-		fmt.Println()
-		s.Check("Frank", "Diana", "Dancing")
-		s.Check("Frank", "Diana", "Diplomacy")
-		s.Check("Frank", "Diana", "Disguise")
-		fmt.Println()
-		s.Check("Chip", "Diana", "Dancing")
-		fmt.Println()
-		s.Check("Diana", "Chip", "Alchemy")
-		s.Check("Diana", "Chip", "Cooking")
-		s.Check("Diana", "Chip", "Criminology")
-	*/
 }
 
+// `CheckAll` checks the visibility of all of `viewee`'s skills to `viewer`.
 func (s System) CheckAll(viewer string, viewee string) string {
 	var sb strings.Builder
 	none := true
 
-	for _, skill := range s.skills[viewee] {
+	for _, skill := range s.Skills[viewee] {
 		if s.Visibility(viewer, viewee, skill) {
 			if !none {
 				sb.WriteString(" | ")
@@ -121,40 +91,33 @@ func (s System) CheckAll(viewer string, viewee string) string {
 	return sb.String()
 }
 
-func (s System) Check(viewer string, viewee string, skill string) {
-	fmt.Printf("%s looking at %s's %s is ", viewer, viewee, skill)
-	v := s.Visibility(viewer, viewee, skill)
-	if v {
-		fmt.Printf("ALLOWED\n")
-	} else {
-		fmt.Printf("BANNED\n")
-	}
-}
-
+// `Visibility` returns the visibility of `viewer`'s `skill` to `viewee`.
 func (s System) Visibility(viewer string, viewee string, skill string) bool {
-	// We might have Object or Class, Object from the query
-	var p Perm
-	var q Perm
+	// We might have Object or Class, Object from the SQL query.  But we don't
+	// currently have an SQL query which means we need to fake up the result.
+	var object, class ObjectPermission
 
-	for _, pt := range s.perms[viewee] {
+	for _, pt := range s.Perms[viewee] {
+		// We either match exactly or with the wildcard.
 		if pt.ObjectID == skill || pt.ObjectID == "*" {
+			// Technically `Class` should only be set on wildcard entries.
 			if pt.Class {
-				q = pt
+				class = pt
 			} else {
-				p = pt
+				object = pt
 			}
 		}
 	}
 
-	x := []Perm{q, p}
-	if q.UserID == "" {
-		x = []Perm{p}
+	// Assume we got both a Class and Object permission entry but if the
+	// Class one is blank, we actually only got an Object entry.
+	entries := []ObjectPermission{class, object}
+	if class.UserID == "" {
+		entries = []ObjectPermission{object}
 	}
-	// End of making our fake SQL results.
 
-	// We need the networks of both people.
-	jnets := s.networks[viewee]
-	pnets := s.networks[viewer]
+	// We need the networks of our viewer.
+	pnets := s.Networks[viewer]
 
 	// Our summation.
 	v := make(map[string]bool)
@@ -165,20 +128,20 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 	}
 
 	// For every permission.
-	for _, item := range x {
+	for _, item := range entries {
 		// If the object is hidden, set everything to false.
-		if item.Permissions.Hidden {
+		if item.Hidden {
 			for n := range v {
 				v[n] = false
 			}
 		}
 
 		// Take the "Shared To" list.
-		sharedTo := item.Permissions.SharedTo
+		sharedTo := item.Networks.SharedTo
 		// If it's shared to "all networks", set the "Shared To"
 		// list to be all of the viewee's networks.
-		if item.Permissions.AllNet {
-			sharedTo = jnets
+		if item.Networks.All {
+			sharedTo = s.Networks[viewee]
 		}
 
 		for _, n := range sharedTo {
@@ -191,11 +154,11 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 
 		// Add in the "Public" flag.
 		for n := range v {
-			v[n] = v[n] || item.Permissions.Public
+			v[n] = v[n] || item.Public
 		}
 
 		// Remove all the "Hidden From" networks.
-		for _, n := range item.Permissions.HiddenFrom {
+		for _, n := range item.Networks.HiddenFrom {
 			v[n] = false
 		}
 	}
