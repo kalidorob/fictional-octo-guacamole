@@ -1,0 +1,83 @@
+{
+    "Alice": [
+    {
+      "UserID": "Alice",
+      "ObjectType": "skill",
+      "ObjectID": "Alchemy",
+      "Permissions": { "Public": true }
+    },
+    {
+      "UserID": "Alice",
+      "ObjectType": "skill",
+      "ObjectID": "Acrobatics",
+      "Permissions": { "SharedTo": ["Boundgrave"] }
+    },
+    {
+      "UserID": "Alice",
+      "ObjectType": "skill",
+      "ObjectID": "Archery",
+      "Permissions": { "Hidden": true }
+    }
+  ],
+    "Bob": [
+    {
+      "UserID": "Bob",
+      "ObjectType": "skill",
+      "ObjectID": "Brainwashing",
+      "Permissions": { "Hidden": true }
+    },
+    {
+      "UserID": "Bob",
+      "ObjectType": "skill",
+      "ObjectID": "Boating",
+      "Permissions": { "AllNet": true }
+    },
+    {
+      "UserID": "Bob",
+      "ObjectType": "skill",
+      "ObjectID": "Birdwatching",
+      "Permissions": { "Public": true }
+    }
+  ],
+    "Chip": [
+    {
+      "UserID": "Chip",
+      "ObjectType": "skill",
+      "ObjectID": "*",
+      "Class": true,
+      "Permissions": { "AllNet": true }
+    },
+    {
+        "UserID": "Chip",
+        "ObjectType": "skill",
+        "ObjectID": "Cooking",
+        "Class": false,
+        "Permissions": {"HiddenFrom": ["Mextunmo"]}
+    }
+  ],
+  "Diana": [
+    {
+      "UserID": "Diana",
+      "ObjectType": "skill",
+      "ObjectID": "Dancing",
+      "Permissions": { "HiddenFrom": [ "Terregonje" ], "AllNet": true }
+    },
+    {
+      "UserID": "Diana",
+      "ObjectType": "skill",
+      "ObjectID": "Diplomacy",
+      "Permissions": { "Public": true }
+    },
+    {
+      "UserID": "Diana",
+      "ObjectType": "skill",
+      "ObjectID": "Disguise",
+      "Permissions": { "Hidden": true }
+    }
+  ],
+  "Frank": [
+      {"UserID": "Frank", "ObjectType":"skill", "ObjectID": "*", "Class": true,
+          "Permissions": { "AllNet": true }
+      }
+  ]
+}
