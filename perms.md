@@ -43,9 +43,11 @@ For this matrix, our user is in networks N, P.
 
 ## With public profile
 
+A public profile gives visibility to common networks if no permission is set.
+
 | Permission | User | Other in N | Other in P | Other in N, P | Other not in N, P |
 |-----|-----|-----|-----|-----|-----|
-| UNSET | YES | YES | YES | YES | YES |
+| UNSET | YES | YES | YES | YES | no |
 | NONE | YES | no | no | no | no |
 | SOME = P | YES| no | YES | YES | no |
 | SOME = not P | YES | YES | no | YES | no |
@@ -106,7 +108,7 @@ Has three skills which he shares as a class with all his networks:
 
 ## Gerald
 
-In in one network: Toompark, Capehay
+In in two networks: Toompark, Capehay
 
 Has a public profile.
 
@@ -235,6 +237,8 @@ In which VIEWER is looking at VIEWEE's skill S.
 ```
 Fetch Object and/or Class permissions for S for VIEWEE into L
 For each network N from VIEWER, set V[N] = false
+If no permission is set and the profile is public:
+  Create a permission P with P.NETWORKS.ALL = true
 For each permission P in list L ordered by Class, Object:
   If P.HIDDEN:
     set all in V[] = false
@@ -405,6 +409,34 @@ Diana can see both Alchemy and Criminology in Chip's skills because they are sha
 9. Visible = V[Mextunmo] || V[Terregonje] = true
 
 Diana can also see Chip's skill in Cooking because whilst the Mextunmo network is blocked, she gets visibility through Terregonje.
+
+### Worked example: Frank looking at Gerald's skills
+
+#### Gambling, Generosity
+
+Neither of these have an explicit permission set.
+
+1. V[Toompark] = true, V[Capehay] = true
+1. No permission set, create P with NETWORKS.ALL = true
+3. Only one row to consider at Object level
+4. P.HIDDEN = false, skipped
+5. P.NETWORKS.ALL = true, P.NETWORKS.SHARED_TO = [Toompark, Percalcombe]
+6. Toompark in P.NETWORKS.SHARED_TO, V[Toompark] = true
+7. Percalcombe in P.NETWORKS.SHARED_TO, V[Percalcombe] missing, skipped
+7. P.PUBLIC = false, V[] is unchanged
+8. Nothing in P.NETWORKS.HIDDEN_FROM, skipped
+9. Visible = V[Toompark] || V[Capehay] = true
+
+#### Geology
+
+1. V[Toompark] = true, V[Capehay] = true
+3. Only one row to consider at Object level
+4. P.HIDDEN = false, skipped
+5. P.NETWORKS.ALL = false, skipped
+6. Toompark in P.NETWORKS.SHARED_TO, V[Toompark] = true
+7. P.PUBLIC = false, V[] is unchanged
+8. Nothing in P.NETWORKS.HIDDEN_FROM, skipped
+9. Visible = V[Toompark] || V[Capehay] = true
 
 # Questions
 
