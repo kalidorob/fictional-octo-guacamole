@@ -118,9 +118,14 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 	}
 
 	// If we get nothing back from the database for this skill, there's
-	// no permission set and we default to the visibility of their profile.
+	// no permission set and we have to make a fake one pretending that
+	// it's set to "All my networks".
 	if class.UserID == "" && object.UserID == "" {
-		return s.Public[viewee]
+		object = ObjectPermission{
+			Masks: map[string]Permission{
+				"Networks": Permission{All: true},
+			},
+		}
 	}
 
 	// Assume we got both a Class and Object permission entry but if the

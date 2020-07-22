@@ -126,7 +126,7 @@ Has three skills:
 * can see none of Chip's skills (OBJECT-NETS, no shared network)
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
-* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
+* can see none of Gerald's skills
 
 ## Bob
 
@@ -134,7 +134,7 @@ Has three skills:
 * can see all of Chip's skills (CLASS-NETS, Terregonje)
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC) but not Dancing (OBJECT-NETS, !Terregonje)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
-* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
+* can see none of Gerald's skills
 
 ## Chip
 
@@ -142,7 +142,7 @@ Has three skills:
 * can see Bob's skill in Boating (OBJECT-NETS, Terregonje) and Birdwatching
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC) and Dancing (OBJECT-NETS, Mextunmo)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
-* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
+* can see none of Gerald's skills
 
 ## Diana
 
@@ -150,7 +150,7 @@ Has three skills:
 * can see Bob's skill in Boating (OBJECT-NETS, Terregonje) and Birdwatching
 * can see all of Chip's skills (OBJECT-NETS, Mextunmo or Terregonje)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
-* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
+* can see none of Gerald's skills
 
 ## Frank
 

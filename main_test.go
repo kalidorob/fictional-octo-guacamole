@@ -25,10 +25,10 @@ Frank : Alice : Alchemy
 Frank : Bob : Birdwatching
 Frank : Chip : <none>
 Frank : Diana : Diplomacy
-Alice : Gerald : Gambling | Generosity
-Bob : Gerald : Gambling | Generosity
-Chip : Gerald : Gambling | Generosity
-Diana : Gerald : Gambling | Generosity
+Alice : Gerald : <none>
+Bob : Gerald : <none>
+Chip : Gerald : <none>
+Diana : Gerald : <none>
 Frank : Gerald : Gambling | Geology | Generosity
 Gerald : Alice : Alchemy
 Gerald : Bob : Birdwatching
