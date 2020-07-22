@@ -24,7 +24,17 @@ Diana : Frank : <none>
 Frank : Alice : Alchemy
 Frank : Bob : Birdwatching
 Frank : Chip : <none>
-Frank : Diana : Diplomacy`
+Frank : Diana : Diplomacy
+Alice : Gerald : Gambling | Generosity
+Bob : Gerald : Gambling | Generosity
+Chip : Gerald : Gambling | Generosity
+Diana : Gerald : Gambling | Generosity
+Frank : Gerald : Gambling | Geology | Generosity
+Gerald : Alice : Alchemy
+Gerald : Bob : Birdwatching
+Gerald : Chip : <none>
+Gerald : Diana : Diplomacy
+Gerald : Frank : Falconry | Forgery | Forensics`
 
 func TestAll(t *testing.T) {
 	s := NewSystem()

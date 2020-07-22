@@ -76,6 +76,18 @@ Has three skills which he shares as a class with all his networks:
 * Forgery (CLASS-NETS)
 * Forensics (CLASS-NETS)
 
+## Gerald
+
+In in one network: Toompark, Capehay
+
+Has a public profile.
+
+Has three skills:
+
+* Gambling, no permission set
+* Geology (OBJECT-SOME, Toompark)
+* Generosity, no permission set
+
 # Who can see what?
 
 ## Alice
@@ -84,6 +96,7 @@ Has three skills which he shares as a class with all his networks:
 * can see none of Chip's skills (OBJECT-NETS, no shared network)
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
+* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
 
 ## Bob
 
@@ -91,6 +104,7 @@ Has three skills which he shares as a class with all his networks:
 * can see all of Chip's skills (CLASS-NETS, Terregonje)
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC) but not Dancing (OBJECT-NETS, !Terregonje)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
+* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
 
 ## Chip
 
@@ -98,6 +112,7 @@ Has three skills which he shares as a class with all his networks:
 * can see Bob's skill in Boating (OBJECT-NETS, Terregonje) and Birdwatching
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC) and Dancing (OBJECT-NETS, Mextunmo)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
+* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
 
 ## Diana
 
@@ -105,6 +120,7 @@ Has three skills which he shares as a class with all his networks:
 * can see Bob's skill in Boating (OBJECT-NETS, Terregonje) and Birdwatching
 * can see all of Chip's skills (OBJECT-NETS, Mextunmo or Terregonje)
 * can see none of Frank's skills (CLASS-NETS, no shared network)
+* can see Gerald's skill in Gambling (NPS) and Generosity (NPS)
 
 ## Frank
 
@@ -112,18 +128,29 @@ Has three skills which he shares as a class with all his networks:
 * can see Bob's skill in Birdwatching (OBJECT-PUBLIC)
 * can see none of Chip's skills (CLASS-NETS)
 * can see Diana's skill in Diplomacy (OBJECT-PUBLIC)
+* can see all of Gerald's skill in Gambling (NPS) and Generosity (NPS) and Geology (OBJECT-SOME, Toompark)
+
+## Gerald
+
+* can see Alice's skill in Alchemy (OBJECT-PUBLIC)
+* can see Bob's skill in Birdwatching (OBJECT-PUBLIC)
+* can see none of Chip's skills (CLASS-NETS)
+* can see Diana's skill in Diplomacy (OBJECT-PUBLIC)
+* can see all of Frank's skills (CLASS-NETS, Toompark)
+
 
 ## Summary
 
 Left column is viewer, top row is viewee; ie. Alice can see Diana's Diplomacy.
 
-| | Alice | Bob | Chip | Diana | Frank |
-|-----|-----|-----|-----|-----|-----|
-| Alice | --- | Boating, Birdwatching | none | Diplomacy | none |
-| Bob | Alchemy, Acrobatics | --- | all | Diplomacy | none |
-| Chip | Alchemy | Boating, Birdwatching | --- | Diplomacy, Dancing | none |
-| Diana | Alchemy | Boating, Birdwatching | all | --- | none |
-| Frank | Alchemy | Birdwatching | none | Diplomacy | --- |
+| | Alice | Bob | Chip | Diana | Frank | Gerald |
+|-----|-----|-----|-----|-----|-----|-----|
+| Alice | --- | Boating, Birdwatching | none | Diplomacy | none | Gambling, Generosity |
+| Bob | Alchemy, Acrobatics | --- | all | Diplomacy | none | Gambling, Generosity |
+| Chip | Alchemy | Boating, Birdwatching | --- | Diplomacy, Dancing | none | Gambling, Generosity |
+| Diana | Alchemy | Boating, Birdwatching | all | --- | none | Gambling, Generosity |
+| Frank | Alchemy | Birdwatching | none | Diplomacy | --- | Gambling, Generosity, Geology |
+| Gerald | Alchemy | Birdwatching | none | Diplomacy | all | --- |
 
 # Implementation
 

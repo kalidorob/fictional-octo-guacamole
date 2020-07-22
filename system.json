@@ -1,4 +1,7 @@
 {
+  "Public": {
+      "Gerald": true
+  },
   "Networks": {
     "Alice": [
       "Stonebroti",
@@ -20,6 +23,10 @@
     "Frank": [
       "Toompark",
       "Percalcombe"
+    ],
+    "Gerald": [
+        "Toompark",
+        "Capehay"
     ]
   },
   "Perms": {
@@ -218,6 +225,23 @@
           }
         }
       }
+    ],
+    "Gerald": [
+      {
+        "UserID": "Gerald",
+        "ObjectType": "skill",
+        "ObjectID": "Geology",
+        "Class": false,
+        "Public": false,
+        "Hidden": false,
+        "Masks": {
+          "Networks": {
+            "SharedTo": ["Toompark"],
+            "HiddenFrom": null,
+            "All": false
+          }
+        }
+      }
     ]
   },
   "Skills": {
@@ -245,6 +269,11 @@
       "Falconry",
       "Forgery",
       "Forensics"
+    ],
+    "Gerald": [
+        "Gambling",
+        "Geology",
+        "Generosity"
     ]
   }
 }

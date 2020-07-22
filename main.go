@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"sort"
 	"strings"
 )
@@ -26,17 +27,24 @@ type ObjectPermission struct {
 
 type Networks map[string][]string
 type UserPerms map[string][]ObjectPermission
+type Profile map[string]bool
 
 type System struct {
 	Networks Networks
 	Perms    UserPerms
 	Skills   map[string][]string
+	Public   Profile
 }
 
 func NewSystem() System {
+	filename := os.Getenv("JSONFILE")
+	if filename == "" {
+		filename = "system.json"
+	}
+
 	// Easier to initialise from a JSON file than make a big
 	// literal map of structs of structs of ...
-	b, err := ioutil.ReadFile("system.json")
+	b, err := ioutil.ReadFile(filename)
 	if err != nil {
 		panic(err)
 	}
@@ -109,12 +117,20 @@ func (s System) Visibility(viewer string, viewee string, skill string) bool {
 		}
 	}
 
+	// If we get nothing back from the database for this skill, there's
+	// no permission set and we default to the visibility of their profile.
+	if class.UserID == "" && object.UserID == "" {
+		return s.Public[viewee]
+	}
+
 	// Assume we got both a Class and Object permission entry but if the
 	// Class one is blank, we actually only got an Object entry.
 	entries := []ObjectPermission{class, object}
+
 	if class.UserID == "" {
 		entries = []ObjectPermission{object}
 	}
+	// fmt.Printf("%#v\n", entries)
 
 	// We need the networks of our viewer.
 	pnets := s.Networks[viewer]
