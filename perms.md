@@ -175,10 +175,10 @@ Left column is viewer, top row is viewee; ie. Alice can see Diana's Diplomacy.
 
 | | Alice | Bob | Chip | Diana | Frank | Gerald |
 |-----|-----|-----|-----|-----|-----|-----|
-| Alice | --- | Boating, Birdwatching | none | Diplomacy | none | Gambling, Generosity |
-| Bob | Alchemy, Acrobatics | --- | all | Diplomacy | none | Gambling, Generosity |
-| Chip | Alchemy | Boating, Birdwatching | --- | Diplomacy, Dancing | none | Gambling, Generosity |
-| Diana | Alchemy | Boating, Birdwatching | all | --- | none | Gambling, Generosity |
+| Alice | --- | Boating, Birdwatching | none | Diplomacy | none | none |
+| Bob | Alchemy, Acrobatics | --- | all | Diplomacy | none | none |
+| Chip | Alchemy | Boating, Birdwatching | --- | Diplomacy, Dancing | none | none |
+| Diana | Alchemy | Boating, Birdwatching | all | --- | none | none |
 | Frank | Alchemy | Birdwatching | none | Diplomacy | --- | Gambling, Generosity, Geology |
 | Gerald | Alchemy | Birdwatching | none | Diplomacy | all | --- |
 
