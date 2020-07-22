@@ -39,6 +39,7 @@ For this matrix, our user is in networks N, P.
 | SOME = P | YES| no | YES | YES | no |
 | SOME = not P | YES | YES | no | YES | no |
 | NETS | YES | YES | YES | YES | no |
+| PUBLIC | YES | YES | YES | YES | YES |
 
 ## With public profile
 
