@@ -14,6 +14,7 @@
 
 ## Scope
 
+* UNSET - No permission set
 * NONE - Only me, "not shared"
 * SOME - Specific networks
 * NETS - All my networks
@@ -23,6 +24,32 @@
 
 * OBJECT - Per-object
 * CLASS - Per-class
+* PROFILE - Public profile
+
+# Visibility matrix
+
+For this matrix, our user is in networks N, P.
+
+## With non-public profile
+
+| Permission | User | Other in N | Other in P | Other in N, P | Other not in N, P |
+|-----|-----|-----|-----|-----|-----|
+| UNSET | YES | no | no | no | no |
+| NONE | YES | no | no | no | no |
+| SOME = P | YES| no | YES | YES | no |
+| SOME = not P | YES | YES | no | YES | no |
+| NETS | YES | YES | YES | YES | no |
+
+## With public profile
+
+| Permission | User | Other in N | Other in P | Other in N, P | Other not in N, P |
+|-----|-----|-----|-----|-----|-----|
+| UNSET | YES | YES | YES | YES | YES |
+| NONE | YES | no | no | no | no |
+| SOME = P | YES| no | YES | YES | no |
+| SOME = not P | YES | YES | no | YES | no |
+| NETS | YES | YES | YES | YES | no |
+| PUBLIC | YES | YES | YES | YES | YES |
 
 # Actors
 
